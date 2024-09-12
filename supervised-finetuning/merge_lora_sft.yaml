@@ -1,0 +1,13 @@
+# Note: DO NOT use quantized model or quantization_bit when merging lora adapters
+
+# model
+model_name_or_path: NousResearch/Meta-Llama-3-8B-Instruct
+adapter_name_or_path: saves/Custom/lora/honeypot_llama3_v3
+template: llama3
+finetuning_type: lora
+
+# export
+export_dir: models/honeypot-llama3-8B
+export_size: 1
+export_device: cuda
+export_legacy_format: false

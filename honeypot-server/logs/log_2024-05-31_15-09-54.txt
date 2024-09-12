@@ -1,0 +1,10 @@
+@CMD: ls
+@RESP: ```
+bin  desktop  documents  downloads  music  pictures  public  videos
+```
+
+@CMD: 
+@RESP: ```
+bash: command not found
+```
+

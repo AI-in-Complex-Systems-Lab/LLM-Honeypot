@@ -1,0 +1,2 @@
+model_name_or_path: models/honeypot-llama3-8B
+template: llama3
