@@ -1,12 +1,7 @@
 import torch
 import gc
-import re
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,
-    pipeline
-)
+from transformers import pipeline
+
 
 class LLM:
     def __init__(self, model_name="NousResearch/Meta-Llama-3-8B-Instruct"):
@@ -29,7 +24,9 @@ class LLM:
 
         print("Loaded Model: ", self.BASE_MODEL_NAME)
 
-    def answer(self, query, log_history=[], max_tokens=4096, temperature=0.01, top_p=0.8):
+    def answer(
+        self, query, log_history=[], max_tokens=4096, temperature=0.01, top_p=0.8
+    ):
 
         message_history = [{"role": "system", "content": self.SYSTEM_PROMPT}]
         if len(log_history) > 0:
@@ -51,8 +48,8 @@ class LLM:
             temperature=temperature,
             top_p=top_p,
         )
-        response = outputs[0]["generated_text"][len(prompt):]
-        
+        response = outputs[0]["generated_text"][len(prompt) :]
+
         # remove unnecessary quotes
         if response.startswith("```") and response.endswith("```"):
             response = response[3:-3]
@@ -60,4 +57,3 @@ class LLM:
             response = response[1:-1]
 
         return response
-    
